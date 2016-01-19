@@ -11,7 +11,7 @@ There are some flaws in the existing migration libraries:
 - It's abstract. Does not make assumptions about your enviroment and database. (And therefore allows you to store your state in your database)
 - It has a very simple programatic API (only a couple of methods)
 
-# How does it worl?
+# How does it work?
 
 You can take a look at the example file provided. But basically:
 
@@ -24,18 +24,19 @@ You can take a look at the example file provided. But basically:
 var migratus = require('migratus')(options);
 ```
 
-Where options is:
+Where `options` is:
 ```javascript
 {
-  loader,
-  saver,
-  directory
+  loader:loaderFunction,
+  saver:saverFunction,
+  directory:'/path/to/directory'
 }
 ```
+`saver` `(function)` will be called in form of `(state, callback)`. It will store the `state` object and call the `callback` in form of `(err)` when saving is done.
 
-`loader` is a function that receives a callback argument and calls the callback function when the latest state of the db is ready in form of (err, state)
-`saver` is a function that receices a state object and a callback. It should store the state object and call the callback in form of (err) when saving is finished.
-`directory` is the directory that migrations are stored in
+`loader` `(function)` gets a callback and calls the callback in form of `(err, state)`. `state` being the latest state of the database, previously saved by a `saver` function.
+
+`directory` `(string)` is the directory that migrations are stored in
 
 ## Migrate to the latest migration
 
