@@ -81,3 +81,15 @@ module.exports.down = function(cb) {
   });
 }
 ```
+
+# Creating migrations
+
+A very small cli tool is provided to help you create new migration files
+
+```bash
+node_modules/migratus/bin/create [--template /path/to/template] migration name
+```
+
+It will create a new migration file using provided template (optional) with migration name.
+
+If you have defined $EDITOR, it will be opened automatically to the created migration file

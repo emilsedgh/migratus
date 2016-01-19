@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+
+var templatePosition = process.argv.indexOf('--template');
+
+var templateFile;
+
+if(templatePosition > -1) {
+  templateFile = process.argv[templatePosition+1];
+  process.argv.splice(templatePosition, 2);
+} else {
+  var templateFile = __dirname+'/../examples/migrations/1.js';
+}
+
+if(process.argv.length < 3)
+  return help();
+
+var timestamp = new Date().getTime();
+var name = timestamp+'_'+process.argv.slice(2, process.argv.length).join(' ').replace(' ', '-')+'.js'
+
+try {
+  var template = fs.readFileSync(templateFile).toString();
+  fs.writeFileSync(name, template);
+} catch(err) {
+  console.log(err);
+  process.exit();
+}
+
+if(!process.env.EDITOR) {
+  console.log(name);
+  return ;
+}
+
+var spawn = require('child_process').spawn;
+spawn(process.env.EDITOR, ['./'+name], {});
+
+function help() {
+  console.log('Usage: ./create [--template /path/to/template/file] migration name');
+}

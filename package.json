@@ -1,8 +1,11 @@
 {
   "name": "migratus",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Yet another abstract migrations library",
   "main": "lib/index.js",
+  "engines": {
+    "node": "4.x"
+  },
   "scripts": {
     "test": "tests/index.js"
   },
