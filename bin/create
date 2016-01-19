@@ -17,7 +17,7 @@ if(process.argv.length < 3)
   return help();
 
 var timestamp = new Date().getTime();
-var name = timestamp+'_'+process.argv.slice(2, process.argv.length).join(' ').replace(' ', '-')+'.js'
+var name = timestamp+'_'+process.argv.slice(2, process.argv.length).join('-')+'.js'
 
 try {
   var template = fs.readFileSync(templateFile).toString();
