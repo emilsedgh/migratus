@@ -1,0 +1,26 @@
+{
+  "name": "migratus",
+  "version": "0.1.0",
+  "description": "Yet another abstract migrations library",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "tests/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilsedgh/migratus.git"
+  },
+  "keywords": [
+    "migration",
+    "migrate"
+  ],
+  "author": "Emil Sedgh",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/emilsedgh/migratus/issues"
+  },
+  "homepage": "https://github.com/emilsedgh/migratus#readme",
+  "dependencies": {
+    "javascript-natural-sort": "^0.7.1"
+  }
+}
