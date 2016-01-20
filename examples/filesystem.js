@@ -33,6 +33,9 @@ var migrate = Migrate({
   directory:__dirname+'/migrations'
 })
 
+migrate.on('migrate failed', name => console.log('Migration failed:', name));
+migrate.on('migrate succeeded', name => console.log('Migration succeeded:', name));
+
 var to = process.argv[2];
 
 if(to === 'up')

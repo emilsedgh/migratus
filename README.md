@@ -9,7 +9,7 @@ There are some flaws in the existing migration libraries:
 
 - It's Very small
 - It's abstract. Does not make assumptions about your enviroment and database. (And therefore allows you to store your state in your database)
-- It has a very simple programatic API (only a couple of methods)
+- It has a very simple programatic API
 
 # How does it work?
 
@@ -18,7 +18,7 @@ You can take a look at the example file provided. But basically:
 ## Installation
 `npm install migratus`
 
-## Setting up
+## API
 
 ``` javascript
 var migratus = require('migratus')(options);
@@ -37,6 +37,13 @@ Where `options` is:
 `loader` `(function)` gets a callback and calls the callback in form of `(err, state)`. `state` being the latest state of the database, previously saved by a `saver` function.
 
 `directory` `(string)` is the directory that migrations are stored in
+
+### Events
+Returned object is always an `EventEmitter`. It will fire two events:
+
+`migrate failed` when a migration failes. It will provide arguments `(name, direction, err)`
+
+`migrate succeeded` when a migration completes. It will provide arguments `(name, direction)`
 
 ## Migrate to the latest migration
 
