@@ -4,7 +4,7 @@
   "description": "Yet another abstract migrations library",
   "main": "lib/index.js",
   "engines": {
-    "node": "4.x"
+    "node": ">=4.x"
   },
   "scripts": {
     "test": "tests/index.js"
