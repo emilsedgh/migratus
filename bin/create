@@ -16,8 +16,14 @@ if(templatePosition > -1) {
 if(process.argv.length < 3)
   return help();
 
+var dirPosition = process.argv.indexOf('--dir');
+var dir = './'+process.argv[dirPosition+1] || '.'
+
 var timestamp = new Date().getTime();
-var name = timestamp+'_'+process.argv.slice(2, process.argv.length).join('-')+'.js'
+
+const namePosition = Math.max(dirPosition, templatePosition)
+
+var name = dir+'/'+timestamp+'_'+process.argv.slice(namePosition, process.argv.length).join('-')+'.js'
 
 try {
   var template = fs.readFileSync(templateFile).toString();
@@ -36,5 +42,5 @@ var spawn = require('child_process').spawn;
 spawn(process.env.EDITOR, ['./'+name], {});
 
 function help() {
-  console.log('Usage: ./create [--template /path/to/template/file] migration name');
+  console.log('Usage: ./create [--dir destination] [--template /path/to/template/file] migration name');
 }
