@@ -1,6 +1,6 @@
 {
   "name": "migratus",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Yet another abstract migrations library",
   "main": "lib/index.js",
   "engines": {
